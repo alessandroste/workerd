@@ -104,6 +104,11 @@ jobs:
             image: windows-2025-16core
             bazel-config: release_windows
             target-arch: X64
+          - title: windows-arm64
+            os-name: Windows
+            image: windows-2025-arm-16core
+            bazel-config: release_windows_arm
+            target-arch: ARM64
     name: build (${{ matrix.title }})
     uses: './.github/workflows/_bazel.yml'
     with:
