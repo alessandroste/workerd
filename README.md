@@ -61,7 +61,7 @@ In theory, `workerd` should work on any POSIX system that is supported by V8 and
 In practice, `workerd` is tested on:
 
 * Linux and macOS (x86-64 and arm64 architectures)
-* Windows (x86-64 architecture)
+* Windows (x86-64 and arm64 architectures)
 
 On other platforms, you may have to do tinkering to make things work.
 

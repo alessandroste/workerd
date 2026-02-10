@@ -91,6 +91,9 @@ test:ci-macOS --spawn_strategy=local
 build:ci-windows --config=windows_no_dbg
 build:ci-windows-debug --config=debug
 
+build:ci-windows-arm --config=windows_no_dbg --config=windows-arm
+build:ci-windows-arm-debug --config=debug --config=windows-arm
+
 # Some tests (like Python import tests) take a long time to run, especially when debug is enabled
 # For that reason, we only run them in the default configuration for each platform to minimize
 # effect on CI pipeline runtime.
