@@ -367,6 +367,16 @@ build:windows_dbg --linkopt='/OPT:LLDTAILMERGE' --linkopt='/OPT:SAFEICF'
 # a shared library.
 build:windows --copt='/Zc:dllexportInlines-'
 
+#
+# Windows ARM64
+#
+
+# Windows ARM64 configuration uses the same clang-cl toolchain as x86_64
+build:windows-arm --config=windows
+build:windows-arm --cpu=arm64_windows
+build:windows-arm --extra_toolchains=@local_config_cc//:cc-toolchain-arm64_windows-clang-cl
+build:windows-arm --extra_execution_platforms=//:arm64_windows-clang-cl
+
 # Configuration for header parsing. Requires bazel toolchain support (available for macOS, Linux).
 build:parse_headers --features=parse_headers --process_headers_in_dependencies
 # Silence some capnproto warnings/errors that are not relevant for header parsing
@@ -425,6 +435,10 @@ build:release_windows --copt="-fstrict-aliasing"
 # This file breaks our CI windows release builds when compiled using O2/O3
 # Ref: https://github.com/llvm/llvm-project/issues/136481
 build:release_windows --per_file_copt=.*capnp/rpc\.c++@/clang:-O1
+
+# Release configuration for Windows ARM64
+build:release_windows_arm --config=release_windows
+build:release_windows_arm --config=windows-arm
 
 build:windows --cxxopt='/std:c++23preview' --host_cxxopt='/std:c++23preview'
 build:windows --copt='/D_CRT_USE_BUILTIN_OFFSETOF' --host_copt='/D_CRT_USE_BUILTIN_OFFSETOF'
